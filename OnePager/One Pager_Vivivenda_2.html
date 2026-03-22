@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>One-Pager: Vivienda — Genesys Cloud</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+    body { font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; margin:0; background:linear-gradient(180deg,#F1F5F9 0%, #F8FAFC 100%); }
+
+    :root{
+      --genesys-orange:#FF4F1F;
+      --dark:#0F172A;
+      --muted:#64748B;
+      --slate-200:#E2E8F0;
+      --bg:#F1F5F9;
+      --card:#ffffff;
+      --maxw:900px;
+      --shadow:0 10px 25px rgba(15,23,42,0.08);
+      --soft:0 6px 18px rgba(15,23,42,0.06);
+      color:var(--dark);
+    }
+
+    .page{
+      max-width:var(--maxw);
+      margin:26px auto;
+      background:linear-gradient(180deg,#fff 0%, #FBFDFF 100%);
+      border-radius:14px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(15,23,42,0.03);
+      overflow:hidden;
+    }
+
+    /* Header */
+    header{
+      padding:22px 26px;
+      border-bottom:4px solid var(--genesys-orange);
+      display:flex;align-items:center;justify-content:space-between;gap:18px;
+      background:#fff;
+    }
+    .brand{display:flex;align-items:center;gap:14px;}
+    .brand-logo{
+      width:46px;height:46px;border-radius:12px;
+      background:#0B0B0B;
+      display:flex;align-items:center;justify-content:center;
+      box-shadow:var(--soft);
+      overflow:hidden;
+    }
+    .brand-logo img{width:78%;height:auto;display:block;}
+    .brand h1{margin:0;font-size:16px;font-weight:900;letter-spacing:-.02em;}
+    .brand p{margin:2px 0 0;color:var(--muted);font-size:11px;font-weight:700;}
+    .meta{text-align:right;}
+    .meta .k{font-size:10px;font-weight:900;color:#94A3B8;text-transform:uppercase;letter-spacing:.14em;}
+    .meta .v{font-size:12px;font-weight:800;color:var(--dark);margin-top:2px;}
+
+    /* Hero */
+    .hero{
+      padding:28px 26px;
+      background:#0F0F0F;
+      color:#fff;
+    }
+    .hero h2{
+      margin:0 0 10px;
+      font-size:34px;
+      font-weight:900;
+      line-height:1.1;
+      letter-spacing:-.02em;
+    }
+    .hero h2 span{color:var(--genesys-orange);}
+    .hero p{
+      margin:0;
+      max-width:760px;
+      color:#CBD5E1;
+      font-size:13px;
+      line-height:1.6;
+      font-weight:600;
+    }
+    .hero-badges{
+      margin-top:14px;
+      display:flex;gap:14px;flex-wrap:wrap;
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:#E2E8F0;
+    }
+    .badge{display:flex;gap:8px;align-items:center;}
+    .check{color:var(--genesys-orange);}
+
+    /* Sections */
+    .section{
+      padding:20px 26px;
+      border-top:1px solid rgba(15,23,42,0.06);
+      background:#fff;
+    }
+    .section.alt{background:#F8FAFC;}
+    .title{
+      font-size:18px;
+      font-weight:900;
+      margin:0 0 14px;
+      color:var(--dark);
+      border-left:4px solid var(--genesys-orange);
+      padding-left:12px;
+    }
+    .grid-2{display:grid;grid-template-columns:1.25fr .75fr;gap:18px;align-items:start;}
+    .copy{font-size:12px;line-height:1.65;color:var(--muted);font-weight:650;margin:0 0 10px;}
+
+    .card{
+      background:var(--card);
+      border:1px solid rgba(15,23,42,0.06);
+      border-radius:14px;
+      box-shadow:var(--soft);
+      padding:14px;
+    }
+    .card h4{
+      margin:0 0 10px;
+      font-size:11px;
+      font-weight:900;
+      letter-spacing:.12em;
+      color:var(--genesys-orange);
+      text-transform:uppercase;
+    }
+    .list{
+      margin:0;
+      padding-left:16px;
+      color:#475569;
+      font-size:11px;
+      line-height:1.6;
+      font-weight:750;
+    }
+    .list li{margin:5px 0;}
+
+    /* Use cases */
+    .use-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    .use{
+      display:flex;gap:10px;
+      background:#F8FAFC;
+      border:1px solid rgba(15,23,42,0.06);
+      border-radius:14px;
+      padding:12px;
+    }
+    .icon{
+      width:34px;height:34px;border-radius:12px;
+      background:#fff;
+      border:1px solid rgba(15,23,42,0.06);
+      display:flex;align-items:center;justify-content:center;
+      color:var(--genesys-orange);
+      font-weight:900;
+      box-shadow:0 6px 14px rgba(15,23,42,0.05);
+      flex:0 0 auto;
+    }
+    .use h5{margin:0;font-size:12px;font-weight:900;color:var(--dark);}
+    .use p{margin:4px 0 0;font-size:11px;color:var(--muted);line-height:1.55;font-weight:650;}
+
+    /* Capabilities (compact) */
+    .cap-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    .cap{
+      background:#fff;
+      border:1px solid rgba(15,23,42,0.06);
+      border-radius:14px;
+      padding:12px;
+      box-shadow:var(--soft);
+    }
+    .cap strong{display:block;font-size:12px;font-weight:900;color:var(--dark);margin-bottom:6px;}
+    .cap ul{margin:0;padding-left:16px;color:#475569;font-size:11px;line-height:1.55;font-weight:750;}
+    .cap li{margin:4px 0;}
+
+    /* ============================= */
+    /* CASO DE REFERENCIA (NUEVO CSS) */
+    /* ============================= */
+    .ref-section{
+      padding:22px 26px;
+      background:#ffffff;
+      border-top:1px solid rgba(15,23,42,0.06);
+      border-bottom:1px solid rgba(15,23,42,0.06);
+    }
+    .ref-title{
+      margin:0 0 12px 0;
+      font-size:18px;
+      font-weight:900;
+      color:var(--dark);
+      text-align:center;
+      border-left:4px solid var(--genesys-orange);
+      padding-left:12px;
+      display:inline-block;
+    }
+    .ref-title-wrap{
+      display:flex;
+      justify-content:center;
+      margin-bottom:12px;
+    }
+    .ref-card{
+      border:1px solid rgba(15,23,42,0.06);
+      border-radius:16px;
+      overflow:hidden;
+      box-shadow:var(--soft);
+      background:#fff;
+      display:grid;
+      grid-template-columns: 1fr 1.15fr;
+      min-height:160px;
+    }
+    .ref-media{
+      background:#0F172A;
+      height:100%;
+      min-height:160px;
+    }
+    .ref-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .ref-body{
+      padding:16px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:8px;
+    }
+    .ref-body h4{
+      margin:0;
+      font-size:14px;
+      font-weight:900;
+      color:var(--dark);
+      line-height:1.2;
+    }
+    .ref-body p{
+      margin:0;
+      font-size:11px;
+      color:var(--muted);
+      line-height:1.55;
+      font-weight:650;
+    }
+    .ref-body a{
+      color:var(--genesys-orange);
+      text-decoration:underline;
+      font-weight:800;
+    }
+    .ref-tag{
+      margin-top:6px;
+      font-size:9px;
+      font-weight:900;
+      letter-spacing:.12em;
+      color:var(--genesys-orange);
+      text-transform:uppercase;
+    }
+
+    /* CTA */
+    .cta{
+      padding:22px 26px;
+      background:#F8FAFC;
+      border-top:1px solid rgba(15,23,42,0.06);
+      text-align:center;
+    }
+    .cta h3{margin:0 0 8px;font-size:18px;font-weight:900;color:var(--dark);}
+    .cta p{margin:0 0 14px;color:var(--muted);font-size:12px;font-weight:650;}
+    .btn{
+      display:inline-block;
+      background:var(--genesys-orange);
+      color:#fff;
+      padding:11px 16px;
+      border-radius:14px;
+      font-weight:900;
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      text-decoration:none;
+      box-shadow:0 10px 22px rgba(255,79,31,0.16);
+    }
+
+    /* Footer */
+    .foot{
+      padding:14px 26px;
+      background:#F8FAFC;
+      border-top:1px solid rgba(15,23,42,0.06);
+      display:flex;align-items:center;justify-content:space-between;
+      opacity:.55;
+    }
+    .foot img{height:18px;filter:grayscale(1);}
+    .foot span{font-size:9px;font-weight:900;color:#64748B;letter-spacing:.12em;text-transform:uppercase;}
+
+    /* Responsive */
+    @media (max-width:840px){
+      .grid-2{grid-template-columns:1fr;}
+      .use-grid,.cap-grid{grid-template-columns:1fr;}
+      .hero h2{font-size:28px;}
+      header{flex-direction:column;align-items:flex-start;}
+      .meta{text-align:left;}
+      .ref-card{grid-template-columns:1fr;}
+      .ref-media{min-height:170px;}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- HEADER -->
+    <header>
+      <div class="brand">
+        <div class="brand-logo">
+          <img src="./Imagen/Genesys_Logo_Digital Portals.png" alt="Genesys">
+        </div>
+        <div>
+          <h1>Genesys Cloud — Vivienda</h1>
+          <p>Orquestación de Experiencias | México</p>
+        </div>
+      </div>
+      <div class="meta">
+        <div class="k">One Pager</div>
+        <div class="v">Vivienda</div>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <h2>Del lead al residente: <span>experiencias orquestadas</span></h2>
+      <p>
+        Genesys Cloud conecta ventas, crédito y postventa en un solo sistema de interacción,
+        habilitando atención omnicanal, automatización e inteligencia para acelerar cierres y elevar la satisfacción.
+      </p>
+      <div class="hero-badges">
+        <div class="badge"><span class="check">✔</span> Omnicanalidad</div>
+        <div class="badge"><span class="check">✔</span> Journeys con contexto</div>
+        <div class="badge"><span class="check">✔</span> Autoservicio e IA</div>
+      </div>
+    </section>
+
+    <!-- VISIÓN / CONTEXTO -->
+    <section class="section alt">
+      <h3 class="title">Visión estratégica 2026–2030</h3>
+
+      <div class="grid-2">
+        <div>
+          <p class="copy">
+            La vivienda en México enfrenta una transformación: compradores más digitales, mayor competencia,
+            presión de costos y expectativas de seguimiento transparente. La ventaja no está solo en construir,
+            sino en <strong style="color:var(--dark)">comunicar, dar visibilidad y sostener confianza</strong>
+            en cada etapa del ciclo de vida.
+          </p>
+          <p class="copy">
+            La orquestación de comunicaciones y datos permite pasar de interacción reactiva (WhatsApp/correos aislados)
+            a un modelo medible: trazabilidad, SLAs, automatización y mejora continua.
+          </p>
+        </div>
+
+        <div class="card">
+          <h4>Metas clave</h4>
+          <ul class="list">
+            <li>Reducir tiempo de respuesta a leads y citas.</li>
+            <li>Mejorar visibilidad de estatus (crédito / entrega / garantías).</li>
+            <li>Contener contactos con autoservicio y bots.</li>
+            <li>Priorizar casos con IA (urgencia, riesgo, valor).</li>
+            <li>Unificar métricas de CX y operación.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOLORES -->
+    <section class="section">
+      <h3 class="title">Dolores actuales del sector</h3>
+
+      <div class="use-grid">
+        <div class="use">
+          <div class="icon">1</div>
+          <div>
+            <h5>Fragmentación</h5>
+            <p>Ventas, crédito, escrituración y postventa operan con sistemas y criterios distintos.</p>
+          </div>
+        </div>
+
+        <div class="use">
+          <div class="icon">2</div>
+          <div>
+            <h5>Comunicación sin control</h5>
+            <p>WhatsApp y correos sin trazabilidad, SLAs ni historial único del cliente.</p>
+          </div>
+        </div>
+
+        <div class="use">
+          <div class="icon">3</div>
+          <div>
+            <h5>Baja visibilidad</h5>
+            <p>El cliente no sabe “en qué va” su proceso: documentación, entrega, garantías.</p>
+          </div>
+        </div>
+
+        <div class="use">
+          <div class="icon">4</div>
+          <div>
+            <h5>Costos operativos</h5>
+            <p>Seguimientos manuales y repetición de contactos elevan costos y reducen NPS/CSAT.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASOS DE USO -->
+    <section class="section alt">
+      <h3 class="title">Casos de uso con impacto directo</h3>
+
+      <div class="use-grid">
+        <div class="use">
+          <div class="icon">🏷</div>
+          <div>
+            <h5>Ventas & Prospección</h5>
+            <p>Respuesta inmediata, agenda automática, nurturing omnicanal y scoring de leads.</p>
+          </div>
+        </div>
+
+        <div class="use">
+          <div class="icon">📄</div>
+          <div>
+            <h5>Crédito & Escrituración</h5>
+            <p>Notificaciones proactivas, checklist documental y estatus en tiempo real.</p>
+          </div>
+        </div>
+
+        <div class="use">
+          <div class="icon">🏠</div>
+          <div>
+            <h5>Entrega & Postventa</h5>
+            <p>Citas, tickets, coordinación con contratistas y seguimiento.</p>
+          </div>
+        </div>
+
+        <div class="use">
+          <div class="icon">🛠</div>
+          <div>
+            <h5>Administración de Propiedades</h5>
+            <p>Mantenimiento preventivo, incidencias, comunicación con residentes y pagos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPACIDADES -->
+    <section class="section">
+      <h3 class="title">Capacidades clave de Genesys Cloud</h3>
+
+      <div class="cap-grid">
+        <div class="cap">
+          <strong>Omnicanalidad gobernada</strong>
+          <ul>
+            <li>Voz, WhatsApp, chat, email y portal</li>
+            <li>Historial único y trazabilidad</li>
+            <li>SLAs y reglas por etapa</li>
+          </ul>
+        </div>
+
+        <div class="cap">
+          <strong>Journeys orquestados</strong>
+          <ul>
+            <li>Del lead a la entrega</li>
+            <li>Eventos y disparadores automáticos</li>
+            <li>Contexto para cada interacción</li>
+          </ul>
+        </div>
+
+        <div class="cap">
+          <strong>Autoservicio + IA</strong>
+          <ul>
+            <li>Estatus, citas, pagos, garantías</li>
+            <li>Bots y búsqueda inteligente</li>
+            <li>Contención y deflexión</li>
+          </ul>
+        </div>
+
+        <div class="cap">
+          <strong>Analítica accionable</strong>
+          <ul>
+            <li>Motivos de contacto y tendencias</li>
+            <li>Calidad y desempeño</li>
+            <li>Optimización continua</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASO DE REFERENCIA (REEMPLAZA TU BLOQUE ACTUAL POR ESTE) -->
+    <section class="ref-section" aria-labelledby="ref-title">
+      <div class="ref-title-wrap">
+        <h3 class="ref-title" id="ref-title">Referencia Global de servicio al cliente</h3>
+      </div>
+
+      <div class="ref-card">
+        <div class="ref-media">
+          <!-- IMPORTANTE: para PDF/HTML local usa ruta relativa, NO ruta C:\... -->
+          <img
+            src="./Imagen/Hard-Rock-Hotel-mejores-hoteles-para-ninos-en-Cancun-1024x426.jpg"
+            alt="Hospitalidad — referencia Genesys Cloud"
+          />
+        </div>
+
+        <div class="ref-body">
+          <h4>Servicio al cliente de clase mundial</h4>
+
+          <p>
+            Un estudio de Genesys reveló que el 56% de los encuestados calificó a esta hotelera con el mejor servicio al cliente.
+            Ha unificado sus operaciones globales en <strong>Genesys Cloud</strong>, modernizando cómo entrega experiencias al huésped y elevando la personalización.
+          </p>
+
+          <div class="ref-tag">
+            <a href="https://www.genesys.com/company/newsroom/announcements/redefining-hospitality-through-innovation-genesys-cloud-elevates-the-ihg-guest-experience"
+               target="_blank" rel="noopener noreferrer">
+              Hospitalidad · Experiencias (Ver referencia)
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <h3>¿Listo para modernizar la experiencia de vivienda?</h3>
+      <p>Diseñemos un journey orquestado: del lead al residente, con métricas y automatización.</p>
+      <a class="btn" href="mailto:contacto@genesys.com?subject=Interés%20Genesys%20Cloud%20para%20Vivienda%20en%20México">
+        Contactar
+      </a>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="foot">
+      <img src="./Imagen/Genesys_Logo_Digital Portals.png" alt="Genesys">
+      <span>© 2026 Genesys México · One Pager Vivienda</span>
+    </div>
+
+  </div>
+</body>
+</html>
